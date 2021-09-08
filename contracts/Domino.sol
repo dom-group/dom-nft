@@ -33,8 +33,8 @@ contract Domino is ERC721URIStorage,ERC721Enumerable {
     function mint(address to, string memory _tokenURI, string memory _tag) public virtual returns(uint tokenId)  {
         dom.safeTransferFrom(msg.sender, dead, mintPrice);
         tokenId = _tokenIdTracker.current();
-        _setTokenURI(tokenId,_tokenURI);
         _mint(to, tokenId);
+        _setTokenURI(tokenId,_tokenURI);
         _tokenIdTracker.increment();    
         emit Mint(msg.sender,to,_tokenURI,_tag);
     }
