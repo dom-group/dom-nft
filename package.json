@@ -1,0 +1,52 @@
+{
+  "name": "onion",
+  "version": "1.0.0",
+  "description": "onion mixer nft",
+  "main": "index.js",
+  "author": "god",
+  "license": "MIT",
+  "files": [
+    "abi",
+    "artifacts",
+    "contracts",
+    "deployments",
+    "exports",
+    "types"
+  ],
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.10",
+    "@nomiclabs/hardhat-etherscan": "^2.1.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.3.0",
+    "@typechain/ethers-v5": "^4.0.0",
+    "@types/chai": "^4.2.6",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^15.14.1",
+    "chai": "^4.2.0",
+    "decimal.js": "^10.2.1",
+    "ethereum-waffle": "^3.0.2",
+    "ethers": "^5.4.1",
+    "hardhat": "^2.4.1",
+    "hardhat-deploy": "^0.8.9",
+    "hardhat-typechain": "^0.3.5",
+    "mocha": "^6.2.2",
+    "mocha-chai-jest-snapshot": "^1.1.0",
+    "prettier": "^2.0.5",
+    "prettier-plugin-solidity": "^1.0.0-alpha.59",
+    "solhint": "^3.2.1",
+    "solhint-plugin-prettier": "^0.0.5",
+    "ts-generator": "^0.1.1",
+    "ts-node": "^8.10.2",
+    "typechain": "^4.0.0",
+    "typescript": "^3.9.10"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "hardhat-abi-exporter": "^2.2.1",
+    "hardhat-deploy-ethers": "^0.3.0-beta.10"
+  }
+}
