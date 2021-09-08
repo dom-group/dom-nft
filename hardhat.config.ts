@@ -1,3 +1,4 @@
+import "dotenv/config"
 import 'hardhat-typechain'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
@@ -7,7 +8,6 @@ import "hardhat-deploy"
 import "hardhat-deploy-ethers"
 import { HardhatUserConfig } from "hardhat/types"
 
-require('dotenv').config()
 
 console.log(process.env.INFURA_API_KEY)
 
