@@ -13,7 +13,7 @@
 sql example:
 ```
 {
-  tagSearch(text:"ha:*") {
+  dominoInfos(where:{tag_contains:"e"}){
     id
     tag
   }
