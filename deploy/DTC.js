@@ -10,4 +10,4 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     })
   }
   
-  module.exports.tags = ["Omt"]
+  module.exports.tags = ["DTC"]
