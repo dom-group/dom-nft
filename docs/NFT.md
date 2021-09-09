@@ -7,3 +7,15 @@
 | to | recipient address |
 | _tokenURI | metadata info |
 | _tag | tokens label |
+
+#### get exhibit list
+
+sql example:
+```
+{
+  tagSearch(text:"ha:*") {
+    id
+    tag
+  }
+}
+```
