@@ -33,6 +33,10 @@ contract Domino is ERC721URIStorage,ERC721Enumerable,Ownable {
         feeOwner = _feeOwner;
     }
 
+    function setMintPrice(uint _mintPrice) public onlyOwner {
+        mintPrice = _mintPrice;
+    }
+
     function setFee(uint _fee) public onlyOwner {
         require(_fee<MAX_FEE,"error fee rate");
         fee = _fee;
