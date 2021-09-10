@@ -16,7 +16,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     await deploy("Domino", {
       from: deployer,
       args: ["Dom nft coin","DNC",dtc, priceBig],
-      log: true,
+      log: true
     })
   }
   
