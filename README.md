@@ -6,7 +6,7 @@
 | tag | address |
 |-----|-------|
 | DTC | 0xC0A7ef150c8eBfe1a1737980BD3DA50edc3ce001 |
-| [Domino](https://github.com/dom-group/dom-nft/blob/main/docs/NFT.md) | 0x9F9406A886F7DdDFDa013DDe741e9e4180Fb16e4 |
+| [Domino](./docs/NFT.md) | 0x9F9406A886F7DdDFDa013DDe741e9e4180Fb16e4 |
 | Multicall2 | 0x994Cc92Ecf6D84eFaF62D41B6Eb815357dd530b2 |
 
 #### Metadata
