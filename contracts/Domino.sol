@@ -25,7 +25,7 @@ contract Domino is ERC721URIStorage,ERC721Enumerable,Ownable {
     address public dead = 0x000000000000000000000000000000000000dEaD;
     address public feeOwner;
 
-    event Mint(address indexed minter, address indexed holder, string _tokenURI,string _tag, string _cover, uint tokenId);
+    event Mint(address indexed minter, address indexed holder, string _tokenURI, uint tokenId);
 
     constructor(string memory _name, string memory _symbol, IERC20 _dom, uint _mintPrice,address _feeOwner) ERC721(_name,_symbol) {
         dom = _dom;
@@ -46,7 +46,7 @@ contract Domino is ERC721URIStorage,ERC721Enumerable,Ownable {
         return "ipfs:/";
     }
 
-    function mint(address to, string memory _tokenURI, string memory _tag, string memory _cover) public virtual returns(uint tokenId)  {
+    function mint(address to, string memory _tokenURI) public virtual returns(uint tokenId)  {
         require(bytes(_tokenURI).length > 0, "uri should be set");
 
         uint feeAmount = mintPrice.mul(fee)/MAX_FEE;
@@ -57,7 +57,7 @@ contract Domino is ERC721URIStorage,ERC721Enumerable,Ownable {
         _mint(to, tokenId);
         _setTokenURI(tokenId,_tokenURI);
         _tokenIdTracker.increment();    
-        emit Mint(msg.sender,to,_tokenURI,_tag, _cover, tokenId);
+        emit Mint(msg.sender,to,_tokenURI, tokenId);
     }
 
     function tokenURI(uint256 tokenId) public view virtual override(ERC721,ERC721URIStorage) returns (string memory) {

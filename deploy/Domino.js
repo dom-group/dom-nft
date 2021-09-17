@@ -21,5 +21,5 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     })
   }
   
-  module.exports.tags = ["DNC"]
+  module.exports.tags = ["Domino"]
   module.exports.dependencies = ["DTC"];
