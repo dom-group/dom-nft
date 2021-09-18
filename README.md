@@ -2,23 +2,24 @@
 
     `npx hardhat --network bsc-testnet deploy`
 	or
-	
+----------------------	
 ### market 部署
-	1.部署
+1.部署
+
+| 参数| 说明 |
+|-----|-------|
+| _dom | dom erc20 代币地址  |
+
+
+2.初始化
+
+调用 `addWhiteList (address _user)`
+
+| 参数| 说明 |
+|-----|-------|
+| _user | dom erc721 代币地址  |
 	
-	
-	| 参数| 说明 |
-	|-----|-------|
-	| _dom | dom erc20 代币地址  |
-	
-	
-	2.初始化
-	调用 `addWhiteList (address _user)`
-	| 参数| 说明 |
-	|-----|-------|
-	| _user | dom erc721 代币地址  |
-	
-	
+------------------	
 
 #### contract(Ropsten) 
 | tag | address |
