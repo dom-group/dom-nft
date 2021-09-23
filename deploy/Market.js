@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports = async function ({ getNamedAccounts, deployments }) {
     const { deploy } = deployments
   
@@ -5,9 +6,11 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
 
     const dtc = (await deployments.get("DTC")).address;
 
+    const feeOwner = process.env.FEE_OWNER;
+
     const marketDeploy = await deploy("Market", {
       from: deployer,
-      args: [dtc],
+      args: [dtc,feeOwner],
       log: true
     })
 

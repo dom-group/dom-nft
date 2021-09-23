@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 contract WhiteList is Ownable {
 
@@ -33,8 +34,12 @@ contract WhiteList is Ownable {
 contract Market is IERC721Receiver, WhiteList {
     
     using SafeERC20 for IERC20;
+    using SafeMath for uint256;
     //1.token 2.tokenId
     mapping(address=>mapping(uint=>Auction)) public auctions;
+    address public feeOwner;
+    uint public fee;
+    uint public constant MAX_FEE = 10000;
 
     IERC20 public dom;
 
@@ -48,8 +53,18 @@ contract Market is IERC721Receiver, WhiteList {
     event AuctionCancel(address indexed _token,uint _tokenId);
     event AuctionBid(address indexed _token,address indexed _buyer,uint _tokenId);
 
-    constructor(IERC20 _dom) {
+    constructor(IERC20 _dom,address _feeOwner) {
         dom = _dom;
+        feeOwner = _feeOwner;
+    }
+
+    function setFee(uint _fee) public onlyOwner {
+        require(_fee<MAX_FEE,"out of range");
+        fee = _fee;
+    }
+
+    function setFeeOwner(address _feeOwner) public onlyOwner {
+        feeOwner = _feeOwner;
     }
 
     function onERC721Received(
@@ -90,7 +105,9 @@ contract Market is IERC721Receiver, WhiteList {
     function bid(address token,uint tokenId) public {
         Auction storage auction = auctions[token][tokenId];
         require(auction.status,"invalid auction");
-        dom.safeTransferFrom(msg.sender,auction.seller,auction.price);
+        uint totalFee = auction.price.mul(fee).div(MAX_FEE);
+        dom.safeTransferFrom(msg.sender,auction.seller,auction.price.sub(totalFee));
+        dom.safeTransferFrom(msg.sender,feeOwner,totalFee);
         delete auctions[token][tokenId];
         IERC721(token).safeTransferFrom(address(this),msg.sender,tokenId);
         emit AuctionBid(token,msg.sender,tokenId);
