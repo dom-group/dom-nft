@@ -41,6 +41,10 @@ contract Domino is ERC721URIStorage,ERC721Enumerable,Ownable {
         require(_fee<MAX_FEE,"error fee rate");
         fee = _fee;
     }
+	
+	function setFeeOwner(address _feeOwner) public onlyOwner {
+        feeOwner = _feeOwner;
+    }
 
     function _baseURI() internal view virtual override returns (string memory) {
         return "ipfs:/";
